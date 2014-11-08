@@ -1,0 +1,16 @@
+{
+    "contents" : "\n\n#######################################\n########       Projet AD       ########\n########       Sujet n°4       ########\n########    encoding : UTF8    ########\n#######################################\n\n\n# Définition du répertoire de travail\n\nsetwd(\"~/R/MSIAAP/Data_analysis\")\n\n# Lecture des fichiers, regroupés en un fichier commun\n\ndataset <- do.call(cbind, lapply(list.files(\"~/R/MSIAAP/Data_analysis/Data\", \n                full.names = TRUE), read.delim, header = TRUE))\n\nhead(dataset['Vss'])\n\nstr(dataset)\nna <- is.na(dataset[[ncol(dataset)]])\nclass(na)\nas.numeric(na)\n",
+    "created" : 1415440997673.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "678277952",
+    "id" : "2BB0991A",
+    "lastKnownWriteTime" : 1415441600,
+    "path" : "~/R/MSIAAP/Data_analysis/Main_Script.R",
+    "project_path" : "Main_Script.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle: \"Sujet n°4 : Mise en place d'une méthode de prédiction du volume apparent de distribution\"\nauthor: \"Jérôme LAURENT, Julie SAMYDE\"\ndate: \"Saturday, November 08, 2014\"\noutput: pdf_document\n---\n\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.\n\nWhen you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\n```{r}\nsummary(cars)\n```\n\nYou can also embed plots, for example:\n\n```{r, echo=FALSE}\nplot(cars)\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "created" : 1415441069841.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3807230362",
+    "id" : "D7A68536",
+    "lastKnownWriteTime" : 1415441523,
+    "path" : "~/R/MSIAAP/Data_analysis/Rapport.Rmd",
+    "project_path" : "Rapport.Rmd",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
