@@ -1,12 +1,12 @@
 {
-    "contents" : "\n\n#######################################\n########       Projet AD       ########\n########       Sujet n°4       ########\n########    encoding : UTF8    ########\n#######################################\n\n\n# Définition du répertoire de travail\n\nsetwd(\"~/R/MSIAAP/Data_analysis\")\n\n# Lecture des fichiers, regroupés en un fichier commun\n\ndataset <- do.call(cbind, lapply(list.files(\"~/R/MSIAAP/Data_analysis/Data\", \n                full.names = TRUE), read.delim, header = TRUE))\n\nhead(dataset['Vss'])\n\nstr(dataset)\nna <- is.na(dataset[[ncol(dataset)]])\nclass(na)\nas.numeric(na)\n",
+    "contents" : "\n\n#######################################\n########       Projet AD       ########\n########       Sujet n°4       ########\n########    encoding : UTF8    ########\n#######################################\n\n# Packages nécessaires\n\nrequire(ggplot2)\nrequire(plyr)\nrequire(dplyr)\n\n\n# Définition du répertoire de travail\n\nsetwd(\"~/R/MSIAAP/Data_analysis\")\n\n# Lecture des fichiers, regroupés en un fichier commun dataset\n\ndataset <- do.call(cbind, lapply(list.files(\"~/R/MSIAAP/Data_analysis/Data\", \n                full.names = TRUE), read.delim, header = TRUE))\n\ndataset <- dataset[,!(names(dataset) %in% \"Ligand\")] # enlève les colonnes \"Ligands\" qui étaient répétées\n\n# NB : grep() = pattern matching and replacement\n\n\nhead(dataset)\n\nstr(dataset)\nna <- is.na(dataset[[ncol(dataset)]])\nas.numeric(na)\n\n",
     "created" : 1415440997673.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "678277952",
+    "hash" : "2611424952",
     "id" : "2BB0991A",
-    "lastKnownWriteTime" : 1415441600,
+    "lastKnownWriteTime" : 1415453461,
     "path" : "~/R/MSIAAP/Data_analysis/Main_Script.R",
     "project_path" : "Main_Script.R",
     "properties" : {

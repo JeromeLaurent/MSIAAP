@@ -5,18 +5,50 @@ date: "Saturday, November 08, 2014"
 output: pdf_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Sélection des variables
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Une première étape simple consiste en l'application d'un filtre afin de repérer et d'enlever les variables fortement corrélées. En chémoinformatique, les descripteurs moléculaires présentent fréquemment de fortes corrélations entre eux.
 
-```{r}
-summary(cars)
+```{r, eval = FALSE}
+# Centrage-réduction de toutes les variables explicatives
+dat.scale<- scale(dataset[1:(ncol(dataset)-1)],center=TRUE,scale=TRUE)
+
+# Calcul des corrélations
+corMat <- cor(dat.scale)
+
+# Représentation graphique
+corrplot(corMat, order = "hclust", tl.cex = 0.1)
 ```
 
-You can also embed plots, for example:
 
+```{r, echo=FALSE, dpi = 700}
+require(corrplot)
+
+dat.scale<- scale(dataset[1:(ncol(dataset)-1)],center=TRUE,scale=TRUE) 
+
+colnames(dat.scale) <- (1:(ncol(dataset)-1))
+# Nom des colonnes remplacés par des chiffres afin de simplifier la représentation graphique
+
+corMat <- cor(dat.scale)
+# Calcul des corrélations
+
+corrplot(corMat, order = "hclust", tl.cex = 0.1, bg = "white")
+
+```
 ```{r, echo=FALSE}
-plot(cars)
-```
+require(caret)
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```
+```{r}
+# Sélection des variables dont la corrélation est supérieur à 0,70
+highCor <- findCorrelation(corMat, 0.70)
+
+# Suppression de ces variables du jeu de données
+datFiltered.scale <- dat.scale[,-highCor]
+
+# Calcul et représentation de la matrice de corrélation
+corMat.Filt <- cor(datFiltered.scale)
+corrplot(corMat.Filt, order = "hclust", tl.cex = 0.1, bg = "white")
+
+```
+Contenant initialement `r (ncol(dataset)-1)` variables, le jeu de données n'en contient plus que `r ncol(datFiltered.scale)` après application du filtre.
